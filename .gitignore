@@ -39,7 +39,9 @@ checkpoints/
 logs/
 
 # Environment variables / secrets
-.env
+x1/
+.env/
+.venv/
 
 # OS files
 .DS_Store
