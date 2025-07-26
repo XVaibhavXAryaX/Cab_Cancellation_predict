@@ -3,4 +3,5 @@ streamlit
 seaborn
 matplotlib
 scikit-learn
+ geopy
 -e .
