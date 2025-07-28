@@ -78,29 +78,41 @@ This project implements a machine learning solution to predict cab booking cance
 ![Correlation Matrix](images/correlation_matrix.png)
 *Correlation between numerical features*
 
-#### 3. Booking Type Analysis
+#### 3. Missing Values Analysis
+![Missing Values](images/missing_values.png)
+*Analysis of missing data in the dataset*
+
+#### 4. Feature Distribution
+![Feature Distribution](images/feature_distribution.png)
+*Distribution of key features*
+
+#### 5. Booking Type Analysis
 ![Booking Types](images/booking_types.png)
 *Distribution of online vs mobile bookings*
-
-#### 4. Geographic Distribution
-![Geographic Distribution](images/geographic_distribution.png)
-*Distribution of pickup and drop locations*
-
-#### 5. Vehicle Model Analysis
-![Vehicle Models](images/vehicle_models.png)
-*Distribution of vehicle types and their cancellation rates*
 
 #### 6. Travel Type Analysis
 ![Travel Types](images/travel_types.png)
 *Different travel types and their cancellation patterns*
 
-#### 7. Area-wise Cancellation Rates
+#### 7. Vehicle Model Analysis
+![Vehicle Models](images/vehicle_models.png)
+*Distribution of vehicle types and their cancellation rates*
+
+#### 8. Geographic Distribution
+![Geographic Distribution](images/geographic_distribution.png)
+*Distribution of pickup and drop locations*
+
+#### 9. Time-based Patterns
+![Time Patterns](images/time_patterns.png)
+*Cancellation patterns over time*
+
+#### 10. Area-wise Analysis
 ![Area Analysis](images/area_analysis.png)
 *Cancellation rates by pickup and drop areas*
 
-#### 8. Time-based Patterns
-![Time Patterns](images/time_patterns.png)
-*Cancellation patterns over time*
+#### 11. Distance Analysis
+![Distance Analysis](images/distance_analysis.png)
+*Impact of travel distance on cancellations*
 
 ### Key Insights from EDA
 
@@ -122,13 +134,33 @@ This project implements a machine learning solution to predict cab booking cance
 ![Confusion Matrix](images/confusion_matrix.png)
 *Model performance on test data*
 
+### ROC Curve
+![ROC Curve](images/roc_curve.png)
+*Receiver Operating Characteristic curve*
+
+### Precision-Recall Curve
+![Precision-Recall](images/precision_recall.png)
+*Precision-Recall curve for model evaluation*
+
 ### Feature Importance
 ![Feature Importance](images/feature_importance.png)
 *Most important features for prediction*
 
-### ROC Curve
-![ROC Curve](images/roc_curve.png)
-*Receiver Operating Characteristic curve*
+### Model Comparison
+![Model Comparison](images/model_comparison.png)
+*Comparison of different model performances*
+
+### Classification Report
+![Classification Report](images/classification_report.png)
+*Detailed classification metrics*
+
+### Model Performance Summary
+![Model Performance](images/model_performance.png)
+*Overall model performance metrics*
+
+### Final Model Results
+![Final Results](images/final_model_results.png)
+*Final model evaluation results*
 
 ## 🛠️ Installation
 
@@ -173,6 +205,9 @@ python app.py
 3. Fill in the booking details
 4. Click "Predict Cancellation"
 5. View results with confidence scores
+
+![Web Interface](images/web_interface.png)
+*Flask web application interface for cab cancellation prediction*
 
 ### API Usage
 ```python
@@ -276,13 +311,55 @@ gunicorn -w 4 -b 0.0.0.0:8080 app:app
 ```
 
 ### Docker Deployment
+
+#### Quick Start with Docker
+```bash
+# Build the Docker image
+docker build -t cab-cancellation-predict .
+
+# Run the container
+docker run -d -p 5000:5000 --name cab-app cab-cancellation-predict
+
+# Access the application
+# Open: http://localhost:5000
+```
+
+#### Using Docker Compose (Recommended)
+```bash
+# Start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop services
+docker-compose down
+```
+
+#### Using Deployment Scripts
+```bash
+# Linux/Mac
+./docker-deploy.sh build
+./docker-deploy.sh run
+./docker-deploy.sh test
+
+# Windows
+docker-deploy.bat build
+docker-deploy.bat run
+docker-deploy.bat test
+```
+
+#### Dockerfile
 ```dockerfile
 FROM python:3.9-slim
 WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-RUN pip install -r requirements.txt
+RUN pip install -e .
 EXPOSE 5000
-CMD ["python", "app.py"]
+CMD ["python", "simple_app.py"]
 ```
 
 ### Cloud Platforms
@@ -331,15 +408,23 @@ Cab_Cancellation_predict/
 └── images/            # EDA and performance images
     ├── target_distribution.png
     ├── correlation_matrix.png
+    ├── missing_values.png
+    ├── feature_distribution.png
     ├── booking_types.png
-    ├── geographic_distribution.png
-    ├── vehicle_models.png
     ├── travel_types.png
-    ├── area_analysis.png
+    ├── vehicle_models.png
+    ├── geographic_distribution.png
     ├── time_patterns.png
+    ├── area_analysis.png
+    ├── distance_analysis.png
     ├── confusion_matrix.png
-    ├── feature_importance.png
     ├── roc_curve.png
+    ├── precision_recall.png
+    ├── feature_importance.png
+    ├── model_comparison.png
+    ├── classification_report.png
+    ├── model_performance.png
+    ├── final_model_results.png
     └── web_interface.png
 ```
 
@@ -417,7 +502,7 @@ For support and questions:
 
 ---
 
-**Note**: This README includes placeholders for EDA images. To complete the documentation, please add the actual images from your Jupyter notebook analysis to the `images/` directory and update the image paths accordingly.
+**Note**: All EDA images have been extracted from the Jupyter notebook and are now properly displayed in this README. The web interface screenshot can be added by taking a screenshot of the running Flask application at `http://localhost:5000`.
 
 ## 🎯 Quick Start Summary
 

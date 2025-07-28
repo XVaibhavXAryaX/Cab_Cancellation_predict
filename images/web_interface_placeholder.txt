@@ -1,0 +1,18 @@
+WEB INTERFACE SCREENSHOT INSTRUCTIONS
+=====================================
+
+To complete the README.md with the web interface image:
+
+1. Open your web browser
+2. Navigate to: http://localhost:5000
+3. Take a screenshot of the Flask application interface
+4. Save it as: web_interface.png
+5. Replace this placeholder file with the actual screenshot
+
+The screenshot should show:
+- The main form with all input fields
+- The "Predict Cancellation" button
+- The "Train Model" section
+- The overall layout and styling
+
+This will make the README.md complete with all visualizations! 
