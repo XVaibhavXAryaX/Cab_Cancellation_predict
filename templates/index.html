@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cab Cancellation Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🚕 Cab Cancellation Predictor</h1>
+        
+        <form id="predictionForm">
+            <div class="row">
+                <div class="form-group">
+                    <label for="user_id">User ID</label>
+                    <input type="number" id="user_id" name="user_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="vehicle_model_id">Vehicle Model ID</label>
+                    <input type="number" id="vehicle_model_id" name="vehicle_model_id" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="travel_type_id">Travel Type ID</label>
+                    <input type="number" id="travel_type_id" name="travel_type_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="package_id">Package ID</label>
+                    <input type="number" id="package_id" name="package_id" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="from_area_id">From Area ID</label>
+                    <input type="number" id="from_area_id" name="from_area_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="to_area_id">To Area ID</label>
+                    <input type="number" id="to_area_id" name="to_area_id" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="from_city_id">From City ID</label>
+                    <input type="number" id="from_city_id" name="from_city_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="to_city_id">To City ID</label>
+                    <input type="number" id="to_city_id" name="to_city_id" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="online_booking">Online Booking</label>
+                    <select id="online_booking" name="online_booking" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mobile_site_booking">Mobile Site Booking</label>
+                    <select id="mobile_site_booking" name="mobile_site_booking" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="from_lat">From Latitude</label>
+                    <input type="number" id="from_lat" name="from_lat" step="0.0001" required>
+                </div>
+                <div class="form-group">
+                    <label for="from_long">From Longitude</label>
+                    <input type="number" id="from_long" name="from_long" step="0.0001" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="to_lat">To Latitude</label>
+                    <input type="number" id="to_lat" name="to_lat" step="0.0001" required>
+                </div>
+                <div class="form-group">
+                    <label for="to_long">To Longitude</label>
+                    <input type="number" id="to_long" name="to_long" step="0.0001" required>
+                </div>
+            </div>
+            
+            <button type="submit">Predict Cancellation</button>
+        </form>
+        
+        <div id="result"></div>
+        
+        <div class="train-section">
+            <h2>🔄 Retrain Model</h2>
+            <button class="train-btn" onclick="trainModel()">Train Model</button>
+            <div id="trainResult"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 

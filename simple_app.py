@@ -1,14 +1,9 @@
 from flask import Flask, request, jsonify, render_template
 import os
 import sys
-import pandas as pd
-import numpy as np
 
 # Add the project root to Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-from src.pipeline.predict_pipeline import PredictPipeline
-from src.pipeline.train_pipeline import TrainPipeline
 
 app = Flask(__name__)
 
@@ -110,6 +105,4 @@ if __name__ == '__main__':
             print("Port 5000 is busy, trying port 5001...")
             app.run(debug=True, host='0.0.0.0', port=5001)
         else:
-            print(f"Error starting Flask app: {e}")
-
-
+            print(f"Error starting Flask app: {e}") 

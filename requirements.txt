@@ -1,7 +1,8 @@
-pandas 
-streamlit
+pandas
+flask
 seaborn
 matplotlib
 scikit-learn
- geopy
+geopy
+numpy
 -e .
